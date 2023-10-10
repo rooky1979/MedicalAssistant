@@ -66,3 +66,18 @@
   padding: 10px;
   box-shadow: 0px 2px 5.5px rgba(119, 119, 119, 0.7);
 }
+.button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #62bfed;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.2s ease-in;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.7);
+}
+.button:hover {
+    background: #3f474e;
+  }

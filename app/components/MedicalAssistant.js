@@ -85,6 +85,7 @@ const MedicalAssistant = () => {
           value={userInput.symptoms}
           onChange={handleUserInput}
         />
+        <button className={styles.button} type="submit">Submit</button>
       </form>
     </main>
   );
