@@ -6,27 +6,26 @@
   background-image: url("/drbob.jpg");
   background-size: cover;
   background-attachment: fixed;
-  
 }
 .header {
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-items: center;
-    background-color: red;
-    padding: 20px;
-    border: 3px solid rgb(108, 2, 2);
-    border-radius: 5px;
-    width: 60%;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-items: center;
+  background-color: red;
+  padding: 20px;
+  border: 3px solid rgb(108, 2, 2);
+  border-radius: 5px;
+  width: 60%;
 }
 .title {
-    font-size: 60px;
-    color: azure;
+  font-size: 60px;
+  color: azure;
 }
 .subtitle {
-    font-size: 25px;
-    color:azure
+  font-size: 25px;
+  color: azure;
 }
 .form {
   display: inline-flexbox;
@@ -67,17 +66,26 @@
   box-shadow: 0px 2px 5.5px rgba(119, 119, 119, 0.7);
 }
 .button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #62bfed;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.2s ease-in;
-    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.7);
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #62bfed;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.2s ease-in;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.7);
 }
 .button:hover {
-    background: #3f474e;
-  }
+  background: #3f474e;
+}
+.response {
+  background-color: aliceblue;
+  border-radius: 5px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.7);
+  padding: 20px; /* Adjust the padding as needed */
+  margin: 20px;
+  width:60%;
+  font-size: 20px;
+}

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "../styles/Medical.module.css";
+import { chatWithGPT } from "../api/chatGPT";
 
 const MedicalAssistant = () => {
   const [userInput, setUserInput] = useState({
@@ -10,13 +11,24 @@ const MedicalAssistant = () => {
     symptoms: "",
   });
 
+  const [chatbotMessage, setChatbotMessage] = useState("");
+
   const handleUserInput = (e) => {
     const { name, value } = e.target;
     setUserInput({ ...userInput, [name]: value });
   };  
 
-  const handleSubmit = (e) => {
-    return true;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    
+    const userMessage = `Age: ${userInput.age}, Gender: ${userInput.gender}, Location: ${userInput.location}, Relevant Medical History: ${userInput.history}, Symptoms: ${userInput.symptoms}`;
+    
+    try {
+      const chatbotResponse = await chatWithGPT(userMessage);
+      setChatbotMessage(chatbotResponse);
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
@@ -27,6 +39,7 @@ const MedicalAssistant = () => {
           50% of the time, it's correct everytime!!!
         </p>
       </div>
+
       <form onSubmit={handleSubmit} className={styles.form}>
         <label className={styles.label} htmlFor="age">
           Age:
@@ -61,7 +74,7 @@ const MedicalAssistant = () => {
           value={userInput.location}
           onChange={handleUserInput}
         />
-        <label className={styles.label} htmlFor="medicalhistory">
+        <label className={styles.label} htmlFor="history">
           Relevant medical history (if applicable):
         </label>
         <textarea
@@ -87,6 +100,10 @@ const MedicalAssistant = () => {
         />
         <button className={styles.button} type="submit">Submit</button>
       </form>
+      <div className={styles.response}>
+        <p><strong>Dr Bob says:</strong></p>
+        {chatbotMessage}
+        </div>
     </main>
   );
 };
