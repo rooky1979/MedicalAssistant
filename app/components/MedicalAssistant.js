@@ -3,6 +3,9 @@ import styles from "../styles/Medical.module.css";
 import { chatWithGPT } from "../api/chatGPT";
 
 const MedicalAssistant = () => {
+  const API_KEY = process.env.OPENAI_API_KEY;
+    /* "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"; */ 
+  console.log(API_KEY);
   const [userInput, setUserInput] = useState({
     age: "",
     gender: "",
@@ -16,18 +19,18 @@ const MedicalAssistant = () => {
   const handleUserInput = (e) => {
     const { name, value } = e.target;
     setUserInput({ ...userInput, [name]: value });
-  };  
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     const userMessage = `Age: ${userInput.age}, Gender: ${userInput.gender}, Location: ${userInput.location}, Relevant Medical History: ${userInput.history}, Symptoms: ${userInput.symptoms}`;
-    
+
     try {
-      const chatbotResponse = await chatWithGPT(userMessage);
+      const chatbotResponse = await chatWithGPT(userMessage, API_KEY);
       setChatbotMessage(chatbotResponse);
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
 
@@ -98,12 +101,16 @@ const MedicalAssistant = () => {
           value={userInput.symptoms}
           onChange={handleUserInput}
         />
-        <button className={styles.button} type="submit">Submit</button>
+        <button className={styles.button} type="submit">
+          Submit
+        </button>
       </form>
       <div className={styles.response}>
-        <p><strong>Dr Bob says:</strong></p>
+        <p>
+          <strong>Dr Bob says:</strong>
+        </p>
         {chatbotMessage}
-        </div>
+      </div>
     </main>
   );
 };

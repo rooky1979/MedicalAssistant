@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const API_KEY = /* "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"; */ process.env.REACT_APP_API_KEY;
-console.log("API Key:", process.env.REACT_APP_API_KEY);
-export async function chatWithGPT(userInput) {
+/* const API_KEY = "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"; */ /* process.env.OPENAI_API_KEY; */
+export async function chatWithGPT(userInput, API_KEY) {
+  console.log("API Key:", API_KEY);
   try {
     const response = await axios.post(
       "https://api.openai.com/v1/completions",
