@@ -4,8 +4,9 @@ import { chatWithGPT } from "../api/chatGPT";
 
 const MedicalAssistant = () => {
   const API_KEY = process.env.OPENAI_API_KEY;
-    /* "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"; */ 
+
   console.log(API_KEY);
+  
   const [userInput, setUserInput] = useState({
     age: "",
     gender: "",
