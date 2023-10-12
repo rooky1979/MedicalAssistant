@@ -6,7 +6,7 @@ const MedicalAssistant = () => {
   const API_KEY = process.env.OPENAI_API_KEY;
 
   console.log(API_KEY);
-  
+
   const [userInput, setUserInput] = useState({
     age: "",
     gender: "",
@@ -25,10 +25,10 @@ const MedicalAssistant = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const userMessage = `Age: ${userInput.age}, Gender: ${userInput.gender}, Location: ${userInput.location}, Relevant Medical History: ${userInput.history}, Symptoms: ${userInput.symptoms}`;
+    const userMessage = ` List out the possible medical reasons for the following case: Age: ${userInput.age}, Gender: ${userInput.gender}, Location: ${userInput.location}, Relevant Medical History: ${userInput.history}, Symptoms: ${userInput.symptoms}. Include any relevant local health advice based on the person's location. Begin the response with "Dr Bob says: " and the reponse should be in a frothy, nice bedside manner. Always include that the information given is not definite and the person should seek proper medical advice.`;
 
     try {
-      const chatbotResponse = await chatWithGPT(userMessage, API_KEY);
+      const chatbotResponse = await chatWithGPT(userMessage);
       setChatbotMessage(chatbotResponse);
     } catch (error) {
       console.error("Error:", error);
@@ -107,9 +107,6 @@ const MedicalAssistant = () => {
         </button>
       </form>
       <div className={styles.response}>
-        <p>
-          <strong>Dr Bob says:</strong>
-        </p>
         {chatbotMessage}
       </div>
     </main>

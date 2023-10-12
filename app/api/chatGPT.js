@@ -1,7 +1,7 @@
 import axios from "axios";
 
-/* const API_KEY =  /* process.env.OPENAI_API_KEY; */
-export async function chatWithGPT(userInput, API_KEY) {
+ const API_KEY =  process.env.OPENAI_API_KEY; 
+export async function chatWithGPT(userInput) {
   console.log("API Key:", API_KEY);
   try {
     const response = await axios.post(
